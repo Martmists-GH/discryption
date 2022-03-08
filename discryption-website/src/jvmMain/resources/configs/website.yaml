@@ -1,0 +1,31 @@
+# Port the website runs on
+port: 8080
+
+# Database configuration
+database:
+  # Database driver
+  # Options: postgres, sqlite
+  driver: sqlite
+  # Database name
+  database: dcards
+
+  # Postgres configuration
+  # Database host
+  host: localhost
+  # Database port
+  # default: 5432 for postgres
+  port: 5432
+  # Database username
+  username: root
+  # Database password
+  password: root
+
+# Discord oauth config
+auth:
+  callbackUrl: http://localhost:8080/auth/callback
+  inviteUrl: https://discordapp.com/api/oauth2/authorize?client_id=0&scope=bot
+  clientId: 'your-client-id'
+  clientSecret: 'your-client-secret'
+
+admins:
+  - "your-discord-id"
