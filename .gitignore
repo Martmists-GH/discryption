@@ -88,6 +88,9 @@ gradle-app.setting
 # Cache of project
 .gradletasknamecache
 
+# Other plugins
+.idea/discord.xml
+
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
 

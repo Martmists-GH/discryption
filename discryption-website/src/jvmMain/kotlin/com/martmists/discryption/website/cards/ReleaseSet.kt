@@ -1,5 +1,5 @@
 package com.martmists.discryption.website.cards
 
-enum class Sigil {
-    DrawCopyOnDeath
+enum class ReleaseSet {
+    Original,
 }

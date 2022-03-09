@@ -1,9 +1,6 @@
 package com.martmists.discryption.website.tables
 
-import com.martmists.discryption.website.cards.CostType
-import com.martmists.discryption.website.cards.Rarity
-import com.martmists.discryption.website.cards.Sigil
-import com.martmists.discryption.website.cards.Temple
+import com.martmists.discryption.website.cards.*
 import org.jetbrains.exposed.dao.id.IntIdTable
 
 object CardTable : IntIdTable() {
@@ -18,4 +15,5 @@ object CardTable : IntIdTable() {
     val costType = enumeration("cost_type", CostType::class)
     val sigil1 = enumeration("sigil1", Sigil::class).nullable()
     val sigil2 = enumeration("sigil2", Sigil::class).nullable()
+    val releaseSet = enumeration("release_set", ReleaseSet::class)
 }

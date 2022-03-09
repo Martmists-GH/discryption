@@ -25,7 +25,6 @@ allprojects {
             isNonStable(candidate.version) && !isNonStable(currentVersion)
         }
     }
-
 }
 
 subprojects {
@@ -39,8 +38,8 @@ subprojects {
         mavenCentral()
         google()
         maven("https://maven.martmists.com/releases/")
-        maven("https://kotlin.bintray.com/kotlinx/")
         maven("https://repo1.maven.org/maven2")
         maven("https://jitpack.io")
+        maven("https://packages.jetbrains.team/maven/p/skija/maven")
     }
 }

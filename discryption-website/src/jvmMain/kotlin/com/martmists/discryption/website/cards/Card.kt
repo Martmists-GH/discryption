@@ -14,6 +14,7 @@ import kotlinx.serialization.Serializable
 data class Card(
     val id: Int,
     val name: String,
+    val internalName: String,
     val isTerrain: Boolean,
     val temple: Temple,
     val rarity: Rarity,
@@ -22,10 +23,12 @@ data class Card(
     val cost: Int,
     val costType: CostType,
     val sigils: List<Sigil>,
+    val releaseSet: ReleaseSet,
 ) {
     constructor(row: ResultRow) : this(
         row[CardTable.id].value,
         row[CardTable.name],
+        row[CardTable.internalName],
         row[CardTable.isTerrain],
         row[CardTable.temple],
         row[CardTable.rarity],
@@ -34,6 +37,7 @@ data class Card(
         row[CardTable.cost],
         row[CardTable.costType],
         listOfNotNull(row[CardTable.sigil1], row[CardTable.sigil2]),
+        row[CardTable.releaseSet],
     )
 
     companion object {

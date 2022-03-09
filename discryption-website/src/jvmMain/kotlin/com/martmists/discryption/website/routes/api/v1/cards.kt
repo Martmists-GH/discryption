@@ -1,5 +1,7 @@
 package com.martmists.discryption.website.routes.api.v1
 
+import com.martmists.discryption.renderer.Renderer
+import com.martmists.discryption.renderer.RenderInfo
 import com.martmists.discryption.website.cards.Card
 import com.martmists.discryption.website.cards.Rarity
 import com.martmists.discryption.website.httpClient
@@ -39,32 +41,32 @@ fun Routing.cards() {
 
     // Render
     get("/api/v1/cards/{id}/render") {
-        val config = call.receive<CardRenderPayload>()
+        val id = call.parameters["id"]!!.toInt()
+        val params = call.request.queryParameters
         val card = transaction {
-            val id = call.parameters["id"]!!.toInt()
             val row = CardTable.select { CardTable.id eq id }.firstOrNull()
-                ?: let {
-                    call.respond(HttpStatusCode.NotFound, emptyMap<String, String>())
-                    null
-                }
             row?.let(::Card)
-        } ?: return@get
-        val image = httpClient.get<ByteArray>("http://localhost:5000/card/${card.name}") {
-            url.parameters.also {
-                it["rare"] = if (card.rarity == Rarity.Rare) "true" else "false"
-                it["terrain"] = if (card.isTerrain) "true" else "false"
-                it["conduit"] = if (config.inConduit) "true" else "false"
-                it["temple"] = card.temple.name
-                it["opponent"] = if (config.opponent) "true" else "false"
-                it["health"] = config.health.toString()
-                it["max_health"] = card.health.toString()
-                it["attack"] = config.attack.toString()
-                it["max_attack"] = card.attack.toString()
-                it["cost"] = card.cost.toString()
-                it["cost_type"] = card.costType.ordinal.toString()
-                it["sigils"] = card.sigils.joinToString(",") { it.name }
-            }
+        } ?: return@get call.respond(HttpStatusCode.NotFound)
+        val info = try {
+            RenderInfo(
+                card.internalName,
+                card.rarity == Rarity.Rare,
+                card.isTerrain,
+                params["conduit"]?.toBoolean() ?: false,
+                card.temple.name.lowercase(),
+                params["opponent"]?.toBoolean() ?: false,
+                params["health"]!!.toInt(),
+                params["attack"]!!.toInt(),
+                card.health,
+                card.attack,
+                card.cost,
+                card.costType.ordinal,
+                card.sigils.map { it.name.lowercase() }
+            )
+        } catch(e: Exception) {
+            return@get call.respond(HttpStatusCode.BadRequest)
         }
-        call.respond(image)
+        val image = Renderer.render(info)
+        call.respondBytes(image, ContentType.Image.PNG)
     }
 }

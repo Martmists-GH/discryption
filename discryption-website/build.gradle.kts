@@ -30,6 +30,8 @@ kotlin {
 
         val jvmMain by getting {
             dependencies {
+                implementation(project(":discryption-renderer"))
+
                 // Kotlinx libraries
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
                 implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.2")
