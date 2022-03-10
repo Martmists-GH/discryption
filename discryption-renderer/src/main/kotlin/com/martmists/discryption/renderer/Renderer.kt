@@ -3,14 +3,44 @@ package com.martmists.discryption.renderer
 import org.jetbrains.skija.*
 
 object Renderer {
+    // Upscale factor
+    private const val renderScale = 16
+
+    // Colors
     private val black = Paint().setColor(0xFF000000.toInt())
     private val blue = Paint().setColor(0xFF00C0FF.toInt())
     private val dark_blue = Paint().setColor(0xFF007BA3.toInt())
     private val dark_fuchsia = Paint().setColor(0xFF50203E.toInt())
 
+    // Font
     private val typeface = Typeface.makeFromData(Data.makeFromBytes(this::class.java.classLoader.getResource("assets/Marksman.otf")!!.readBytes()))
     private val font = Font(typeface, 16f)
-    private val renderScale = 16
+
+    // Images
+    private val temples = listOf(
+        "nature",
+        "tech",
+        "undead",
+        "wizard",
+    ).associateWith {
+        getImage("pixel_rare_frame_$it.png")
+    }
+    private val empty = mapOf(
+        true to mapOf(
+            true to getImage("pixel_card_empty_rare_terrain.png"),
+            false to getImage("pixel_card_empty_rare.png")
+        ),
+        false to mapOf(
+            true to getImage("pixel_card_empty_terrain.png"),
+            false to getImage("pixel_card_empty.png")
+        )
+    )
+    private val costs = getImage("pixel_card_costs.png")
+    private val conduit = getImage("pixel_card_conduitborder.png")
+
+    // Rendering
+    private val surface = Surface.makeRasterN32Premul(44 * renderScale, 58 * renderScale)
+    private val canvas = surface.canvas.scale(renderScale.toFloat(), renderScale.toFloat())
 
     private fun getImage(path: String): Image {
         return Image.makeFromEncoded(
@@ -19,15 +49,12 @@ object Renderer {
     }
 
     fun render(info: RenderInfo) : ByteArray {
-        val surface = Surface.makeRasterN32Premul(44 * renderScale, 58 * renderScale)
-        var canvas = surface.canvas.scale(renderScale.toFloat(), renderScale.toFloat())
-
         val borderOffset = if (info.rare) 0f else 1f
-        canvas.drawImage(getImage("pixel_card_empty${if (info.rare) "_rare" else ""}${if (info.terrain) "_terrain" else ""}.png"),  borderOffset, borderOffset)
+        canvas.drawImage(empty[info.rare]!![info.terrain]!!,  borderOffset, borderOffset)
         canvas.drawImage(getImage("pixelportrait_${info.name}.png"), 2f, 2f)
 
         if (info.rare) {
-            canvas.drawImage(getImage("pixel_rare_frame_${info.temple}.png"), 0f, 0f)
+            canvas.drawImage(temples[info.temple]!!, 0f, 0f)
         }
 
         if (info.cost > 0 && !info.opponent){
@@ -37,7 +64,7 @@ object Renderer {
                 sx += 27
                 sy -= 48
             }
-            canvas.drawImageRect(getImage("pixel_card_costs.png"), Rect(sx, sy, sx+24, sy+13), Rect(18f, 2f, 42f, 15f))
+            canvas.drawImageRect(costs, Rect(sx, sy, sx+24, sy+13), Rect(18f, 2f, 42f, 15f))
         }
 
         val attackPaint = when {
@@ -75,12 +102,13 @@ object Renderer {
         }
 
         if (info.conduit) {
-            canvas.drawImage(getImage("pixel_card_conduitborder.png"), 0f, 0f)
+            canvas.drawImage(conduit, 0f, 0f)
         }
 
-        canvas.scale(1 / renderScale.toFloat(), 1 / renderScale.toFloat())
         val image = surface.makeImageSnapshot()
         val pngData = image.encodeToData(EncodedImageFormat.PNG)!!
+        canvas.clear(0)
+
         return pngData.bytes
     }
 }
