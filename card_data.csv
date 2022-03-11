@@ -1,0 +1,85 @@
+Adder,adder,The caustic Adder. Damage from its poison bite is always lethal.,0,0,0,1,1,2,1,14,,0
+Bloodhound,bloodhound,The dauntless Bloodhound. It leaps to oppose new creatures when they are played.,0,0,0,2,3,2,1,30,,0
+Bullfrog,bullfrog,The watchful Bullfrog. It leaps in the way of attacking flyers.,0,0,0,1,2,1,1,35,,0
+Cat,cat,The undying Cat. Sacrificing the poor beast does not kill it.,0,0,0,0,1,1,1,36,,0
+Elk,elk,The flighty Elk. It moves after attacking.,0,0,0,2,4,2,1,42,,0
+Elk Fawn,elkcub,The nascent Fawn. It quickly grows into an Elk.,0,0,0,1,1,1,1,42,20,0
+Field Mice,fieldmouse,Hm. The licentious Field Mice. You will draw a copy when they are played.,0,0,0,2,2,2,1,16,,0
+Grizzly,grizzly,The monstrous Grizzly. Its form speaks enough of its efficacy.,0,0,0,4,6,3,1,,,0
+Hawk,hawk,,0,0,0,3,1,2,1,22,,0
+Hrokkall,hrokkall,,0,0,1,1,1,1,1,44,23,0
+Mantis God,mantisgod,The holy Mantis God. A perfect incarnation of terror.,0,0,1,1,1,1,1,45,,0
+Mole,mole,The omnipresent Mole. It burrows and emerges to block any landborn attacker.,0,0,0,0,4,1,1,47,,0
+Mole Man,moleman,The stalwart Mole Man. The ultimate defense.,0,0,1,0,6,1,1,47,35,0
+Raven,raven,The conniving Raven. A blight upon the skies.,0,0,0,2,3,2,1,22,,0
+Salmon,salmon,,0,0,0,2,2,2,1,44,42,0
+Squirrel Ball,squirrelball,,0,0,0,0,1,1,1,41,,0
+Urayuli,urayuli,This level of brutish strength needs no explanation...,0,0,1,7,7,4,1,,,0
+Warren,warren,The bountiful Warren. It spawns a rabbit when it is played.,1,0,0,0,2,1,1,18,,0
+Wolf Cub,wolfcub,The young Wolf Cub. It grows into a Wolf after a single turn.,0,0,0,1,1,1,1,20,,0
+Curve Hopper,abovecurve,,0,1,1,2,3,4,3,,,0
+Buff Conduit,attackconduit,,0,1,0,0,2,2,3,10,,0
+Automaton,automaton,,0,1,0,1,1,3,3,,,0
+Energy Bot,batterybot,,0,1,0,0,1,2,3,23,,0
+Bolthound,bolthound,,0,1,0,2,2,6,3,30,,0
+Explode Bot,bombbot,,0,1,0,1,1,2,3,21,,0
+Mrs. Bomb,bombmaiden,,0,1,1,1,2,3,3,6,,0
+Double Gunner,closerbot,,0,1,0,2,1,6,3,40,,0
+Energy Conduit,energyconduit,,0,1,1,1,2,3,3,11,,0
+Gamblobot,energyroller,,0,1,0,0,1,3,3,2,,0
+Factory Conduit,factoryconduit,,0,1,0,0,2,3,3,12,,0
+Insectodrone,insectodrone,,0,1,0,1,1,3,3,22,,0
+L33pB0t,leapbot,,0,1,0,0,2,1,3,35,,0
+M3atB0t,meatbot,,0,1,0,0,1,2,3,46,,0
+49er,minecart,,0,1,0,1,1,2,3,42,,0
+Null Conduit,nullconduit,,0,1,0,0,1,1,3,13,,0
+Plasma Jimmy,plasmagunner,,0,1,1,0,3,2,3,0,,0
+Steel Mice,robomice,,0,1,0,1,1,4,3,16,,0
+Sentry Drone,sentrybot,,0,1,0,0,1,1,3,37,,0
+Shutterbug,shutterbug,,0,1,1,1,1,5,3,14,37,0
+Steambot,steambot,,0,1,0,2,2,6,3,,,0
+Mox Module,techmoxtriple,,1,1,1,0,3,3,3,27,,0
+Thick Droid,thickbot,,0,1,0,1,3,5,3,,,0
+Banshee,banshee,,0,2,0,1,1,2,0,22,,0
+Bonehound,bonehound,,0,2,0,2,3,7,0,30,,0
+Bone Heap,bonepile,,0,2,1,0,1,0,2,4,,0
+Broken Obol,coinleft,,0,2,0,0,2,3,0,38,,0
+Broken Obol,coinright,,0,2,0,0,2,3,0,34,,0
+Dead Hand,deadhand,,0,2,1,1,1,5,0,17,,0
+Pharaoh's Pets,deadpets,,0,2,0,0,1,6,0,46,36,0
+Draugr,draugr,,0,2,0,0,1,1,0,31,,0
+The Walkers,family,,0,2,0,1,2,4,0,34,,0
+Frank & Stein,franknstein,,0,2,0,2,2,5,0,,,0
+Ghost Ship,ghostship,,0,2,0,0,1,4,0,44,39,0
+Gravedigger,gravedigger,,0,2,0,0,3,1,0,7,,0
+Headless Horseman,headlesshorseman,,0,2,1,5,5,13,0,22,42,0
+Mummy Lord,mummy,,0,2,0,3,3,8,0,,,0
+Necromancer,necromancer,,0,2,1,1,2,3,0,15,,0
+Revenant,revenant,,0,2,0,3,1,3,0,8,,0
+Sarcophagus,sarcophagus,,0,2,0,0,2,4,0,20,,0
+Skeleton,skeleton,,0,2,0,1,1,0,2,8,,0
+Skelemagus,skeletonmage,,0,2,0,4,1,2,0,8,28,0
+Tomb Robber,tombrobber,,0,2,1,0,2,0,2,1,,0
+Blue Mage,bluemage,,0,3,0,0,1,4,2,29,,0
+Hover Mage,flyingmage,,0,3,0,1,1,4,2,22,,0
+Force Mage,forcemage,,0,3,0,0,1,4,2,33,,0
+Gem Fiend,gemfiend,,0,3,0,2,1,4,2,28,,0
+Green Mage,greenmage,,0,3,0,0,2,1,2,,,0
+Junior Sage,juniorsage,,0,3,0,1,2,1,2,,,0
+Mage Knight,mageknight,,0,3,0,1,3,2,2,28,,0
+Gourmage,marrowmage,,0,3,0,0,2,1,2,4,,0
+Master Bleene,masterBG,,0,3,1,0,4,5,2,3,,0
+Master Goranj,masterGO,,0,3,1,2,6,3,2,28,,0
+Master Orlu,masterOB,,0,3,1,1,1,6,2,22,32,0
+Bleene's Mox,moxBG,,1,3,1,0,2,0,2,24,25,0
+Goranj's Mox,moxGO,,1,3,1,0,2,0,2,25,26,0
+Orlu's Mox,moxOB,,1,3,1,0,2,0,2,26,24,0
+Emerald Mox,moxemerald,,0,3,0,0,1,0,2,25,,0
+Ruby Mox,moxruby,,0,3,0,0,1,0,2,26,,0
+Sapphire Mox,moxsapphire,,0,3,0,0,1,0,2,24,,0
+Muscle Mage,musclemage,,0,3,0,1,1,1,2,43,,0
+Orange Mage,orangemage,,0,3,0,0,1,2,2,9,,0
+Practice Wizard,practicemage,,0,3,0,0,3,2,2,,,0
+Mage Pupil,pupil,,0,3,0,1,1,0,2,28,,0
+Ruby Golem,rubygolem,,0,3,0,1,1,2,2,19,,0
+Stim Mage,stimmage,,0,3,0,0,2,1,2,5,,0
