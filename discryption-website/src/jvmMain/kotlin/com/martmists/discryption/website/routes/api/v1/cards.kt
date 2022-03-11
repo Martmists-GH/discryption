@@ -53,6 +53,7 @@ fun Routing.cards() {
                 card.rarity == Rarity.Rare,
                 card.isTerrain,
                 params["conduit"]?.toBoolean() ?: false,
+                params["conduit_state"]?.toInt() ?: 0,
                 card.temple.name.lowercase(),
                 params["opponent"]?.toBoolean() ?: false,
                 params["health"]?.toInt() ?: card.health,

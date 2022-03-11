@@ -5,6 +5,7 @@ data class RenderInfo(
     val rare: Boolean,
     val terrain: Boolean,
     val conduit: Boolean,
+    val conduitState: Int,
     val temple: String,
     val opponent: Boolean,
     val health: Int,

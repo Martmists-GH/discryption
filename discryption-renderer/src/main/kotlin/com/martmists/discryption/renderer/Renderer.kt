@@ -36,13 +36,15 @@ object Renderer {
         )
     )
     private val costs = getImage("pixel_card_costs.png")
-    private val conduit = getImage("pixel_card_conduitborder.png")
+    private val conduitBorder = getImage("pixel_card_conduitborder.png")
+    private val conduit = getImage("conduit_icons.png")
 
     // Rendering
     private val surface = Surface.makeRasterN32Premul(44 * renderScale, 58 * renderScale)
     private val canvas = surface.canvas.scale(renderScale.toFloat(), renderScale.toFloat())
 
     private fun getImage(path: String): Image {
+        println("Loading image: $path")
         return Image.makeFromEncoded(
             this::class.java.classLoader.getResource("assets/$path")!!.readBytes()
         )
@@ -77,11 +79,28 @@ object Renderer {
             else -> dark_fuchsia
         }
 
+        if ("conduit" in info.name) {
+            // Draw conduit
+            canvas.drawImageRect(conduit, Rect(3f, 0f, 47f, 13f), Rect(0f, 30f, 44f, 43f))
+
+            if (info.conduitState and 1 != 0) {
+                canvas.drawImageRect(conduit, Rect(3f, 13f, 47f, 26f), Rect(0f, 30f, 44f, 43f))
+            }
+
+            if (info.conduitState and 2 != 0) {
+                canvas.drawImageRect(conduit, Rect(3f, 26f, 47f, 39f), Rect(0f, 30f, 44f, 43f))
+            }
+        }
         canvas.drawString(info.attack.toString(), 3f, 55f, font, attackPaint)
         val health = info.health.toString()
         canvas.drawString(health, 42f - 6 * health.length, 55f, font, healthPaint)
 
         fun drawSigil(name: String, x: Float, y: Float) {
+            if (name == "conduitnull") {
+                return
+            }
+
+            var name = name
             var sx = x
             var sy = y
             if (name.startsWith("activated_")) {
@@ -89,6 +108,9 @@ object Renderer {
                 sy += 2
             } else if (name == "gaingem_all") {
                 sx -= 6
+            }
+            if (name == "explodeondeath" && info.opponent) {
+                name = "explodeondeath_flipped"
             }
             canvas.drawImage(getImage("pixelability_$name.png"), sx, sy)
         }
@@ -102,7 +124,7 @@ object Renderer {
         }
 
         if (info.conduit) {
-            canvas.drawImage(conduit, 0f, 0f)
+            canvas.drawImage(conduitBorder, 0f, 0f)
         }
 
         val image = surface.makeImageSnapshot()

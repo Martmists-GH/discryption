@@ -6,6 +6,7 @@ import org.jetbrains.exposed.dao.id.IntIdTable
 object CardTable : IntIdTable() {
     val name = varchar("name", 255)
     val internalName = varchar("internal_name", 255)
+    val description = varchar("description", 255).nullable()
     val isTerrain = bool("is_terrain")
     val temple = enumeration("temple", Temple::class)
     val rarity = enumeration("rarity", Rarity::class)
